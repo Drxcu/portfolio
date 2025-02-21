@@ -1,0 +1,202 @@
+--- 
+import ProjectCard from '../components/ProjectCard.astro';
+import fuelCalculatorImg from '../assets/fuel-calculator.png';
+import drxcuImg from '../assets/drxcu.png';
+import wipImg from '../assets/wip.png';
+
+const projects = [
+  {
+    title: 'Fuel-Calculator',
+    description: 'Compares coupons to find the best deal to buy fuel.',
+    imageUrl: fuelCalculatorImg.src,
+    link: 'https://drxcu.com/fuel-calculator',
+    technologies: ['HTML', 'JavaScript', 'Cloudflare', 'GPT', 'CSS'],
+  },
+  {
+    title: 'FlexScribe',
+    description: 'A WIP transcription service that uses AI to transcribe audio files.',
+    imageUrl: wipImg.src,
+    link: 'https://drxcu.com/flexscribe',
+    technologies: ['JStack', 'Whisper', 'fal.ai', 'PyAnnote', 'WIP'],
+  },
+  {
+    title: 'NextGPT',
+    description: 'A WIP app to create custom-knowledge chatbots with minimal setup and configuration.',
+    imageUrl: wipImg.src,
+    link: '#',
+    technologies: ['LLMs', 'Vector Databases', 'Key-Value Databases', 'Reinforcement Learning', 'WIP'],
+  },
+  {
+    title: 'drxcu.com',
+    description: 'This very website you are on right now.',
+    imageUrl: drxcuImg.src,
+    link: 'https://drxcu.com',
+    technologies: ['Astro', 'tailwind', 'Cloudflare', 'Gemini 2.0', 'o3-mini'],
+  },
+];
+---
+
+<section
+  id="projects"
+  class="relative h-screen bg-neutral-800 text-white flex items-center justify-center overflow-hidden"
+>
+  <div class="container mx-auto px-4 py-8">
+    <h2
+      class="text-6xl font-bold mb-36 text-left underline decoration-orange-500"
+    >
+      My Projects
+    </h2>
+
+    <div class="carousel-container relative w-full overflow-hidden">
+      <!-- The carousel now includes clones at each end -->
+      <div id="carousel" class="carousel flex transition-transform duration-500">
+        <!-- Clone of the last project -->
+        <div class="w-full h-full flex-shrink-0" data-clone="clone-last">
+          <ProjectCard {...projects[projects.length - 1]} />
+        </div>
+
+        <!-- Actual project slides -->
+        {projects.map((project) => (
+          <div class="w-full h-full flex-shrink-0">
+            <ProjectCard {...project} />
+          </div>
+        ))}
+
+        <!-- Clone of the first project -->
+        <div class="w-full h-full flex-shrink-0" data-clone="clone-first">
+          <ProjectCard {...projects[0]} />
+        </div>
+      </div>
+
+      <button
+        class="absolute top-1/2 transform -translate-y-1/2 left-4 bg-neutral-700 hover:bg-neutral-600 text-white p-4 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+        id="prevBtn"
+      >
+        &lt;
+      </button>
+      <button
+        class="absolute top-1/2 transform -translate-y-1/2 right-4 bg-neutral-700 hover:bg-neutral-600 text-white p-4 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+        id="nextBtn"
+      >
+        &gt;
+      </button>
+
+      <!-- Navigation dots – note we use bottom-4 so they're visible -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {projects.map((_, index) => (
+          <button
+            class="w-3 h-3 rounded-full bg-neutral-600 transition-colors duration-300 nav-dot focus:outline-none focus:ring-2 focus:ring-orange-500"
+            data-index={index}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .carousel {
+    display: flex;
+  }
+  .carousel-container {
+    max-width: 1200px;
+    width: 90vw;
+
+    margin: 0 auto;
+    position: relative;
+  }
+  .nav-dot.active {
+    background-color: rgb(249, 115, 22); /* Orange-500 */
+  }
+</style>
+
+<script>
+  // Grab DOM elements
+  const carousel = document.getElementById("carousel");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const dots = document.querySelectorAll(".nav-dot");
+  const container = document.querySelector(".carousel-container");
+
+  // The total number of DOM slides is our projects plus two clones.
+  const totalSlides = carousel.children.length; // projects.length + 2
+  let cardWidth = container.offsetWidth; // Each slide's width
+  let counter = 1; // Start at the first real slide (index 1)
+
+  // Set initial position
+  carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+
+  // Update dots – the active dot corresponds to counter - 1
+  const updateDots = () => {
+    let activeIndex;
+    if (counter === 0) {
+      activeIndex = projects.length - 1;
+    } else if (counter === totalSlides - 1) {
+      activeIndex = 0;
+    } else {
+      activeIndex = counter - 1;
+    }
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === activeIndex);
+    });
+  };
+
+  updateDots();
+
+  // Helper function to move the carousel
+  const slideTransition = () => {
+    carousel.style.transition = "transform 0.5s";
+    carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+  };
+
+  // Next button click
+  nextBtn.addEventListener("click", () => {
+    if (counter >= totalSlides - 1) return; // Prevent extra clicks
+    counter++;
+    slideTransition();
+  });
+
+  // Prev button click
+  prevBtn.addEventListener("click", () => {
+    if (counter <= 0) return;
+    counter--;
+    slideTransition();
+  });
+
+  // When the transition ends, check for clones and reset
+  carousel.addEventListener("transitionend", () => {
+    // If we've reached the clone of the first slide, jump back to the real first slide
+    if (
+      carousel.children[counter].getAttribute("data-clone") === "clone-first"
+    ) {
+      carousel.style.transition = "none";
+      counter = 1;
+      carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+    }
+    // If we've reached the clone of the last slide, jump to the real last slide
+    if (
+      carousel.children[counter].getAttribute("data-clone") === "clone-last"
+    ) {
+      carousel.style.transition = "none";
+      counter = totalSlides - 2;
+      carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+    }
+    updateDots();
+  });
+
+  // Dot click: slide directly to the corresponding slide (offset by 1)
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      counter = index + 1;
+      slideTransition();
+      updateDots();
+    });
+  });
+
+  // Update cardWidth on window resize
+  window.addEventListener("resize", () => {
+    cardWidth = container.offsetWidth;
+    carousel.style.transition = "none";
+    carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+  });
+</script>

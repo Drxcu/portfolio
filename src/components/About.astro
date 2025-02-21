@@ -1,0 +1,79 @@
+---
+const skills = [
+  'JavaScript',
+  'TypeScript',
+  'CSS',
+  'Python',
+  'SQL',
+  'Next.js',
+  'Astro',
+  'Git',
+  'HTML',
+  'OpenAI API',
+  'LLMs',
+  'Claude',
+  'Gemini',
+  'GPT',
+  'Deepseek',
+  'Cursor',
+  'AWS',
+  'Cloudflare',
+  'fal.ai',
+  'tailwind',
+  't3.chat',
+  'Ghostty',
+  'JStack',
+  'Java',
+  'C',
+
+
+];
+---
+
+<section
+  id="about"
+  class="relative h-screen bg-neutral-900 text-white flex items-center justify-center overflow-hidden"
+>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-6xl font-bold mb-36 text-left underline decoration-orange-500">About Me</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Description */}
+      <div>
+        <h2 class="text-3xl font-bold mb-4 underline decoration-orange-500">Who am I?</h2>
+        <p class="text-lg mb-6">
+          I'm a student at TUM, interested in AI and its applications. I'm
+          passionate about learning new things and building useful tools,
+          always looking for new challenges.
+        </p>
+        <p class="text-lg mb-6">
+          I love messing around, breaking things and creating new tools at the same time, always 
+          learning along the way and challenging myself to try out new things.
+        </p>
+        <p class="text-lg mb-6">
+          In my free time, I start way too many side projects, because I like exploring new
+          technologies. Actually getting things done is another story, but you'll be able to 
+          see some of my work in the projects section.
+        </p>
+        <p class="text-lg mb-6">
+          I love working with people who are passionate about their work and like to go the extra step.
+          I'm always looking for new people to work with and learn from, so don't hesitate to reach out if 
+          you think we could work on something interesting together.
+        </p>
+      </div>
+
+      {/* Skills */}
+      <div>
+        <h3 class="text-3xl font-bold mb-4 underline decoration-orange-500">Tools I love</h3>
+        <div class="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span
+              class="bg-orange-500/25 text-white rounded-md py-1 px-3 text-lg"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

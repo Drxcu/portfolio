@@ -1,0 +1,108 @@
+---
+import x from '../assets/x.svg';
+import github from '../assets/github.svg';
+import instagram from '../assets/instagram.svg';
+import linkedin from '../assets/linkedIn.svg';
+---
+
+<section
+  id="contact"
+  class="relative h-screen bg-neutral-900 text-white flex flex-col items-center justify-center overflow-hidden"
+>
+  <div class="container mx-auto px-4 py-8">
+    <h2 class="text-6xl font-bold mb-36 text-left underline decoration-orange-500">
+      Contact Me
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Contact Form -->
+      <div class="w-full md:w-1/2">
+        <form id="contactForm" class="flex flex-col gap-4">
+          <input
+            type="text"
+            id="subject"
+            placeholder="Subject"
+            required
+            class="p-4 rounded bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
+
+          <textarea
+            id="message"
+            placeholder="Your message..."
+            rows="6"
+            required
+            class="p-4 rounded bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="bg-orange-500 hover:bg-orange-700 py-3 px-4 rounded font-bold transition w-fit focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <!-- Other Means of Contact -->
+      <div class="w-full md:w-1/2 flex flex-col items-center justify-center gap-4">
+        <p class="text-xl mb-4">Or reach out via social media:</p>
+        <div class="flex gap-4">
+          <a
+            href="https://x.com/drxcu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
+            <img src={x.src} alt="X (Twitter)" class="w-6 h-6" />
+          </a>
+          <a
+            href="https://github.com/drxcu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
+            <img src={github.src} alt="GitHub" class="w-6 h-6" />
+          </a>
+          <a
+            href="https://instagram.com/drxcu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
+            <img src={instagram.src} alt="Instagram" class="w-6 h-6" />
+          </a>
+          <a
+            href="https://linkedin.com/in/vladprigoreanu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
+            <img src={linkedin.src} alt="LinkedIn" class="w-6 h-6" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Get form values
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+
+      // Change the email address below to yours
+      const email = "vlad.prigoreanu@hotmail.com";
+
+      // Build the mailto URL with encoded subject and body
+      const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(message)}`;
+
+      // Open the default email client
+      window.location.href = mailtoLink;
+    });
+  </script>
+</section>
