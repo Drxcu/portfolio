@@ -130,98 +130,96 @@ const projects = [
 
 <script>
   // Grab DOM elements
-  const carousel = document.getElementById("carousel");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+  const carousel = document.getElementById("carousel") as HTMLElement | null;
+  const prevBtn = document.getElementById("prevBtn") as HTMLElement | null;
+  const nextBtn = document.getElementById("nextBtn") as HTMLElement | null;
   const dots = document.querySelectorAll(".nav-dot");
-  const container = document.querySelector(".carousel-container");
+  const container = document.querySelector(".carousel-container") as HTMLElement | null;
 
-  // The total number of DOM slides is our projects plus two clones.
-  const totalSlides = carousel.children.length; // projects.length + 2
-  let cardWidth = carousel.children[0].offsetWidth; // Each slide's width
+  // Safety check: ensure all elements exist
+  if (!carousel || !prevBtn || !nextBtn || !container) {
+    console.error("Required carousel elements not found");
+  } else {
+    // The total number of DOM slides is our projects plus two clones.
+    const totalSlides = carousel.children.length; // projects.length + 2
+    let cardWidth = (carousel.children[0] as HTMLElement).offsetWidth; // Each slide's width
 
-  // Recalculate cardWidth and reset scroll on resize
-  window.addEventListener('resize', () => {
-    cardWidth = carousel.children[0].offsetWidth;
-    carousel.style.transition = 'none';
-    carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
-  });
-  let counter = 1; // Start at the first real slide (index 1)
-
-  // Set initial position
-  carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
-
-  // Update dots – the active dot corresponds to counter - 1
-  const updateDots = () => {
-    let activeIndex;
-    if (counter === 0) {
-      activeIndex = projects.length - 1;
-    } else if (counter === totalSlides - 1) {
-      activeIndex = 0;
-    } else {
-      activeIndex = counter - 1;
-    }
-    dots.forEach((dot, index) => {
-      dot.classList.toggle("active", index === activeIndex);
+    // Recalculate cardWidth and reset scroll on resize
+    window.addEventListener('resize', () => {
+      cardWidth = (carousel.children[0] as HTMLElement).offsetWidth;
+      carousel.style.transition = 'none';
+      carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
     });
-  };
+    let counter = 1; // Start at the first real slide (index 1)
 
-  updateDots();
-
-  // Helper function to move the carousel
-  const slideTransition = () => {
-    carousel.style.transition = "transform 0.5s";
+    // Set initial position
     carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
-  };
 
-  // Next button click
-  nextBtn.addEventListener("click", () => {
-    if (counter >= totalSlides - 1) return; // Prevent extra clicks
-    counter++;
-    slideTransition();
-  });
+    // Update dots – the active dot corresponds to counter - 1
+    const updateDots = () => {
+      let activeIndex;
+      if (counter === 0) {
+        activeIndex = (carousel.children.length - 2) - 1;
+      } else if (counter === totalSlides - 1) {
+        activeIndex = 0;
+      } else {
+        activeIndex = counter - 1;
+      }
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === activeIndex);
+      });
+    };
 
-  // Prev button click
-  prevBtn.addEventListener("click", () => {
-    if (counter <= 0) return;
-    counter--;
-    slideTransition();
-  });
-
-  // When the transition ends, check for clones and reset
-  carousel.addEventListener("transitionend", () => {
-    // If we've reached the clone of the first slide, jump back to the real first slide
-    if (
-      carousel.children[counter].getAttribute("data-clone") === "clone-first"
-    ) {
-      carousel.style.transition = "none";
-      counter = 1;
-      carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
-    }
-    // If we've reached the clone of the last slide, jump to the real last slide
-    if (
-      carousel.children[counter].getAttribute("data-clone") === "clone-last"
-    ) {
-      carousel.style.transition = "none";
-      counter = totalSlides - 2;
-      carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
-    }
     updateDots();
-  });
 
-  // Dot click: slide directly to the corresponding slide (offset by 1)
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      counter = index + 1;
+    // Helper function to move the carousel
+    const slideTransition = () => {
+      carousel.style.transition = "transform 0.5s";
+      carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+    };
+
+    // Next button click
+    nextBtn.addEventListener("click", () => {
+      if (counter >= totalSlides - 1) return; // Prevent extra clicks
+      counter++;
       slideTransition();
+    });
+
+    // Prev button click
+    prevBtn.addEventListener("click", () => {
+      if (counter <= 0) return;
+      counter--;
+      slideTransition();
+    });
+
+    // When the transition ends, check for clones and reset
+    carousel.addEventListener("transitionend", () => {
+      // If we've reached the clone of the first slide, jump back to the real first slide
+      if (
+        carousel.children[counter].getAttribute("data-clone") === "clone-first"
+      ) {
+        carousel.style.transition = "none";
+        counter = 1;
+        carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+      }
+      // If we've reached the clone of the last slide, jump to the real last slide
+      if (
+        carousel.children[counter].getAttribute("data-clone") === "clone-last"
+      ) {
+        carousel.style.transition = "none";
+        counter = totalSlides - 2;
+        carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
+      }
       updateDots();
     });
-  });
 
-  // Update cardWidth on window resize
-  window.addEventListener("resize", () => {
-    cardWidth = container.offsetWidth;
-    carousel.style.transition = "none";
-    carousel.style.transform = `translateX(${-cardWidth * counter}px)`;
-  });
+    // Dot click: slide directly to the corresponding slide (offset by 1)
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        counter = index + 1;
+        slideTransition();
+        updateDots();
+      });
+    });
+  }
 </script>
