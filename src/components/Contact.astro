@@ -7,14 +7,14 @@ import linkedin from '../assets/linkedIn.svg';
 
 <section
   id="contact"
-  class="relative h-screen bg-neutral-900 text-white flex flex-col items-center justify-center overflow-hidden"
+  class="relative h-screen flex flex-col items-center justify-center overflow-auto bg-neutral-900 text-white"
 >
-  <div class="container mx-auto px-4 py-8">
-    <h2 class="text-6xl font-bold mb-36 text-left underline decoration-orange-500">
+  <div class="container mx-auto px-4 py-16 sm:py-8">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-16 sm:mb-36 text-left underline decoration-orange-500">
       Contact Me
     </h2>
 
-    <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col md:flex-row gap-8 w-full">
       <!-- Contact Form -->
       <div class="w-full md:w-1/2">
         <form id="contactForm" class="flex flex-col gap-4">
@@ -44,40 +44,40 @@ import linkedin from '../assets/linkedIn.svg';
       </div>
 
       <!-- Other Means of Contact -->
-      <div class="w-full md:w-1/2 flex flex-col items-center justify-center gap-4">
-        <p class="text-xl mb-4">Or reach out via social media:</p>
-        <div class="flex gap-4">
+      <div class="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-8 md:mt-0">
+        <p class="text-base sm:text-lg md:text-xl mb-4">Or reach out via social media:</p>
+        <div class="flex gap-2 sm:gap-4 flex-wrap justify-center">
           <a
             href="https://x.com/drxcu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={x.src} alt="X (Twitter)" class="w-6 h-6" />
+            <img src={x.src} alt="X (Twitter)" class="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://github.com/drxcu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={github.src} alt="GitHub" class="w-6 h-6" />
+            <img src={github.src} alt="GitHub" class="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://instagram.com/drxcu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={instagram.src} alt="Instagram" class="w-6 h-6" />
+            <img src={instagram.src} alt="Instagram" class="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://linkedin.com/in/vladprigoreanu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={linkedin.src} alt="LinkedIn" class="w-6 h-6" />
+            <img src={linkedin.src} alt="LinkedIn" class="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
         </div>
       </div>
@@ -85,13 +85,13 @@ import linkedin from '../assets/linkedIn.svg';
   </div>
 
   <script>
-    const contactForm = document.getElementById("contactForm");
-    contactForm.addEventListener("submit", (event) => {
+    const contactForm = document.getElementById("contactForm") as HTMLFormElement;
+    contactForm?.addEventListener("submit", (event) => {
       event.preventDefault(); // Prevent the default form submission
 
       // Get form values
-      const subject = document.getElementById("subject").value;
-      const message = document.getElementById("message").value;
+      const subject = (document.getElementById("subject") as HTMLInputElement)?.value;
+      const message = (document.getElementById("message") as HTMLTextAreaElement)?.value;
 
       // Change the email address below to yours
       const email = "vlad.prigoreanu@hotmail.com";

@@ -4,18 +4,18 @@ import background from '../assets/background.svg';
 
 <section
   id="hero"
-  class="relative h-screen text-white flex items-center justify-center overflow-hidden"
+  class="relative h-screen text-white flex items-center justify-center overflow-auto"
 >
   <div
     class="absolute inset-0 bg-cover bg-center"
     style={`background-image: url(${background.src}); opacity: 0.7;`}
   ></div>
 
-  <div class="relative z-10 text-center">
-    <h1 class="text-8xl font-bold mb-4">Hey, I'm <span class="underline decoration-orange-500">Vlad</span>!</h1>
-    <p class="text-2xl mb-8">
+  <div class="relative z-10 text-center px-2 py-16 sm:py-8">
+    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 leading-tight">Hey, I'm <span class="underline decoration-orange-500">Vlad</span>!</h1>
+    <p class="text-lg sm:text-xl md:text-2xl mb-8">
       Amateur full stack dev who enjoys messing around with <span class="text-orange-500 font-semibold">AI</span> and <br/> 
-	  loves to create <span class="text-orange-500 font-semibold">usefull</span> digital tools.
+      loves to create <span class="text-orange-500 font-semibold">usefull</span> digital tools.
     </p>
   </div>
 </section>
