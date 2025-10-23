@@ -24,11 +24,6 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
-      - name: Test connectivity
-        run: |
-          ping -c 1 ${{ secrets.SERVER_IP }} || echo "Ping failed"
-          nc -zv ${{ secrets.SERVER_IP }} 22 || echo "Port 22 unreachable"
-
       - name: Deploy to server
         uses: appleboy/scp-action@master
         with:
