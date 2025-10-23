@@ -1,3 +1,11 @@
+## Deployment
+
+To deploy changes to production:
+
+```bash
+./deploy.sh
+
+
 # Astro Starter Kit: Basics
 
 ```sh
