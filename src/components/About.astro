@@ -34,40 +34,42 @@ const skills = [
   id="about"
   class="relative min-h-screen text-white flex items-center justify-center overflow-visible bg-neutral-900"
 >
-  <div class="container mx-auto px-4 py-16 sm:py-8">
-    <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-16 sm:mb-36 text-left underline decoration-orange-500">About Me</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="container mx-auto px-4 py-12 sm:py-16 md:py-20">
+    <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 md:mb-16 text-left underline decoration-orange-500">
+      About Me
+    </h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
       {/* Description */}
-      <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 underline decoration-orange-500">Who am I?</h2>
-        <p class="text-base sm:text-lg mb-6">
+      <div class="space-y-4">
+        <h2 class="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold mb-4 underline decoration-orange-500">Who am I?</h2>
+        <p class="text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-gray-300">
           I'm a student at TUM, interested in AI and its applications. I'm
           passionate about learning new things and building useful tools,
           always looking for new challenges.
         </p>
-        <p class="text-base sm:text-lg mb-6">
+        <p class="text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-gray-300">
           I love messing around, breaking things and creating new tools at the same time, always 
           learning along the way and challenging myself to try out new things.
         </p>
-        <p class="text-base sm:text-lg mb-6">
+        <p class="text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-gray-300">
           In my free time, I start way too many side projects, because I like exploring new
           technologies. Actually getting things done is another story, but you'll be able to 
           see some of my work in the projects section.
         </p>
-        <p class="text-base sm:text-lg mb-6">
+        <p class="text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-gray-300">
           I love working with people who are passionate about their work and like to go the extra step.
           I'm always looking for new people to work with and learn from, so don't hesitate to reach out if 
-          you think we could work on something interesting together. Testing.
+          you think we could work on something interesting together.
         </p>
       </div>
 
       {/* Skills */}
       <div>
-        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 underline decoration-orange-500">Tools I love</h3>
+        <h3 class="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold mb-6 underline decoration-orange-500">Tools I love</h3>
         <div class="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <span
-              class="bg-orange-500/25 text-white rounded-md py-1 px-3 text-base sm:text-lg"
+              class="bg-orange-500/25 text-white rounded-md py-1 px-2 xs:px-3 text-xs xs:text-sm sm:text-base md:text-lg whitespace-nowrap"
             >
               {skill}
             </span>

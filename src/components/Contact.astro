@@ -7,23 +7,23 @@ import linkedin from '../assets/linkedIn.svg';
 
 <section
   id="contact"
-  class="relative h-screen flex flex-col items-center justify-center overflow-auto bg-neutral-900 text-white"
+  class="relative min-h-screen flex flex-col items-center justify-center overflow-auto bg-neutral-900 text-white"
 >
-  <div class="container mx-auto px-4 py-16 sm:py-8">
-    <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-16 sm:mb-36 text-left underline decoration-orange-500">
+  <div class="container mx-auto px-4 py-12 sm:py-16 md:py-20 w-full max-w-6xl">
+    <h2 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 md:mb-16 text-left underline decoration-orange-500">
       Contact Me
     </h2>
 
-    <div class="flex flex-col md:flex-row gap-8 w-full">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
       <!-- Contact Form -->
-      <div class="w-full md:w-1/2">
+      <div class="w-full lg:w-1/2">
         <form id="contactForm" class="flex flex-col gap-4">
           <input
             type="text"
             id="subject"
             placeholder="Subject"
             required
-            class="p-4 rounded bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-3 xs:p-4 text-sm xs:text-base rounded bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
           />
 
           <textarea
@@ -31,12 +31,12 @@ import linkedin from '../assets/linkedIn.svg';
             placeholder="Your message..."
             rows="6"
             required
-            class="p-4 rounded bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-3 xs:p-4 text-sm xs:text-base rounded bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none transition"
           ></textarea>
 
           <button
             type="submit"
-            class="bg-orange-500 hover:bg-orange-700 py-3 px-4 rounded font-bold transition w-fit focus:outline-none focus:ring-2 focus:ring-white"
+            class="bg-orange-500 hover:bg-orange-700 py-2 xs:py-3 px-4 xs:px-6 text-sm xs:text-base rounded font-bold transition w-fit focus:outline-none focus:ring-2 focus:ring-white"
           >
             Submit
           </button>
@@ -44,40 +44,40 @@ import linkedin from '../assets/linkedIn.svg';
       </div>
 
       <!-- Other Means of Contact -->
-      <div class="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 mt-8 md:mt-0">
-        <p class="text-base sm:text-lg md:text-xl mb-4">Or reach out via social media:</p>
-        <div class="flex gap-2 sm:gap-4 flex-wrap justify-center">
+      <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center gap-6 lg:gap-8">
+        <p class="text-sm xs:text-base sm:text-lg md:text-xl text-center lg:text-left">Or reach out via social media:</p>
+        <div class="flex gap-3 xs:gap-4 sm:gap-6 flex-wrap justify-center lg:justify-start">
           <a
             href="https://x.com/drxcu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 xs:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={x.src} alt="X (Twitter)" class="w-5 h-5 sm:w-6 sm:h-6" />
+            <img src={x.src} alt="X (Twitter)" class="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://github.com/drxcu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 xs:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={github.src} alt="GitHub" class="w-5 h-5 sm:w-6 sm:h-6" />
+            <img src={github.src} alt="GitHub" class="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://instagram.com/drxcu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 xs:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={instagram.src} alt="Instagram" class="w-5 h-5 sm:w-6 sm:h-6" />
+            <img src={instagram.src} alt="Instagram" class="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://linkedin.com/in/vladprigoreanu"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 sm:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="p-2 xs:p-3 bg-white hover:bg-gray-200 rounded-full transition focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <img src={linkedin.src} alt="LinkedIn" class="w-5 h-5 sm:w-6 sm:h-6" />
+            <img src={linkedin.src} alt="LinkedIn" class="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />
           </a>
         </div>
       </div>
@@ -87,21 +87,17 @@ import linkedin from '../assets/linkedIn.svg';
   <script>
     const contactForm = document.getElementById("contactForm") as HTMLFormElement;
     contactForm?.addEventListener("submit", (event) => {
-      event.preventDefault(); // Prevent the default form submission
+      event.preventDefault();
 
-      // Get form values
       const subject = (document.getElementById("subject") as HTMLInputElement)?.value;
       const message = (document.getElementById("message") as HTMLTextAreaElement)?.value;
 
-      // Change the email address below to yours
       const email = "vlad.prigoreanu@hotmail.com";
 
-      // Build the mailto URL with encoded subject and body
       const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(message)}`;
 
-      // Open the default email client
       window.location.href = mailtoLink;
     });
   </script>

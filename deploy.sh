@@ -5,9 +5,9 @@ echo "Building Astro site..."
 npm run build
 
 echo "Deploying to server..."
-scp -r dist/* drxcu@prodesk:/var/www/drxcu.com/
+scp -r dist/* drxcu@ssh.drxcu.com:/var/www/drxcu.com/
 
 echo "Restarting Nginx..."
-ssh drxcu@prodesk "sudo systemctl restart nginx"
+ssh drxcu@ssh.drxcu.com "sudo systemctl restart nginx"
 
 echo "✅ Deployment complete!"
